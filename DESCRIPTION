@@ -1,15 +1,15 @@
 Package: rsutlis
 Title: Utlis tools for satellite processing
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Shun",
            family = "Bi",
            role = c("aut", "cre"),
-           email = "bishun1994@foxmail.com"))
-Description: Help me process satellite data in R
+           email = "bishun1994@foxmail.com")
+Description: Help me process satellite data in R.
 License: MIT + file LICENSE
 depend: R (>= 3.6.2)
-Imports: magrittr (>=1.5), raster (>=3.3.13), sp(>=1.4.4)
+Imports: magrittr, raster, sp, rgdal
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

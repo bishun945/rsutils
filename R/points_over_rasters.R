@@ -52,7 +52,7 @@ points_over_rasters <- function(im, pts){
   return(result)
 }
 
-
+globalVariables("crs")
 
 
 
