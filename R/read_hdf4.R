@@ -43,7 +43,7 @@ read_hdf4 <- function(fn, which_sds = "all"){
   df_hdf <- data.frame()
 
 
-  if(which_sds = "all"){
+  if(which_sds == "all"){
     sds_select <- sds_info$sds_name
   }else{
     if(all(which_sds %in% sds_info$sds_name)){

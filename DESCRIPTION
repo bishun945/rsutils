@@ -1,6 +1,6 @@
 Package: rsutlis
 Title: Utlis tools for satellite processing
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Shun",
            family = "Bi",

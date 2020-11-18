@@ -4,12 +4,15 @@
 \alias{points_over_rasters}
 \title{points_over_rasters}
 \usage{
-points_over_rasters(im, pts)
+points_over_rasters(im, pts, show.map = FALSE)
 }
 \arguments{
 \item{im}{Raster object or file path could be read}
 
 \item{pts}{data.frame of points with name, lon, and lat}
+
+\item{show.map}{Whether to plot the position and raster frame on \link{leaflet}.
+Default is \code{FALSE}.}
 }
 \value{
 Data frame extracted from the raster file
