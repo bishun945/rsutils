@@ -1,0 +1,4 @@
+globalVariables(c(
+  "crs",
+  "."
+  ))

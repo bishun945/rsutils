@@ -28,12 +28,35 @@ You can install the released version of `rsutlis` from [GitHub](www.github.com/b
 remotes::install_github("bishun945/rsutlis")
 ```
 
-## Example
+## Example of `points_over_rasters`
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to do match-up:
 
 ```{r example}
+library(raster)
 library(rsutlis)
-## basic example code
+f <- system.file("external/test.grd", package="raster")
+im <- raster(f)
+pts <- data.frame(name = 1:3,
+                  lon = c(5.73576, 5.73747, 5.74089),
+                  lat = c(50.97330, 50.96790, 50.97942))
+result <- points_over_rasters(im, pts)
 ```
+
+## Example of `run_simulate_aod`
+
+This is a basic example which shows you how to simulate aerosol reflectance via 6s model:
+
+```{r}
+library(ggplot2)
+result <- run_simulate_aod(aod550_arr = seq(0.1, 0.3, 0.1))
+ref_aerosols <- result$spec_aerosols
+tmp <- reshape2::melt(ref_aerosols, id=c("aod550"))
+tmp$variable <- as.numeric(as.vector(tmp$variable))
+ggplot(data = tmp) + 
+  geom_path(aes(x = variable, y = value / pi,
+                group = aod550, color = aod550), size=1) + 
+  scale_color_viridis_c()
+```
+
 

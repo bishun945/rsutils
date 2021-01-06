@@ -11,7 +11,7 @@
 #' @importFrom sp SpatialPoints
 #' @importFrom magrittr %>%
 #' @importFrom htmltools htmlEscape
-#' @importFrom leaflet addTiles addScaleBar addRectangles addCircleMarkers labelOptions
+#' @importFrom leaflet leaflet addTiles addScaleBar addRectangles addCircleMarkers labelOptions
 #' @export
 #' @examples
 #' library(raster)
@@ -77,7 +77,6 @@ points_over_rasters <- function(im, pts, show.map=FALSE){
 
 }
 
-globalVariables("crs")
 
 
 

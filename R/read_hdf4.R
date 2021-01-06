@@ -1,16 +1,12 @@
-library(gdalUtils)
-library(stringr)
-library(magrittr)
-library(rgdal)
-
-# parameter settings
-fn = "H:\\ImageData\\MODIS_taihu\\MOD00.P2016204.0450_1_hdf4.L2_LAC"
-verbose = TRUE
-
-
+#' @name read_sds_names
+#' @title read_sds_names
+#' @param fn fn
+#' @importFrom stringr str_match str_c str_split
+#' @importFrom gdalUtils gdalinfo get_subdatasets
+#' @noRd
 read_sds_names <- function(fn){
   info = gdalUtils::gdalinfo(fn)
-  sds <- get_subdatasets(fn)
+  sds <- gdalUtils::get_subdatasets(fn)
   sds_ind <- str_split(sds, "\\\\|:", simplify = TRUE) %>%
     .[, ncol(.)] %>% str_c(":", .)
   sds_name_ind <- NULL
@@ -27,7 +23,10 @@ read_sds_names <- function(fn){
 }
 
 #' @name get_sds_info
-#' @export
+#' @title get_sds_info
+#' @param fn fn
+#' @noRd
+#'
 get_sds_info <- function(fn){
   sds_info <- read_sds_names(fn)
   return(sds_info$sds_name)
@@ -35,8 +34,13 @@ get_sds_info <- function(fn){
 
 
 #' @name read_hdf4
-#' @export
-read_hdf4 <- function(fn, which_sds = "all"){
+#' @title read_hdf4
+#' @param fn fn
+#' @param which_sds which_sds
+#' @param verbose verbose
+#' @importFrom rgdal readGDAL
+#' @noRd
+read_hdf4 <- function(fn, which_sds = "all", verbose = TRUE){
 
   sds_info <- read_sds_names(fn)
 
