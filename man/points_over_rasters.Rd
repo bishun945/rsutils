@@ -9,7 +9,7 @@ points_over_rasters(im, pts, show.map = FALSE)
 \arguments{
 \item{im}{Raster object or file path could be read}
 
-\item{pts}{data.frame of points with name, lon, and lat}
+\item{pts}{data.frame of points with the colname \strong{name, lon, lat}}
 
 \item{show.map}{Whether to plot the position and raster frame on \link{leaflet}.
 Default is \code{FALSE}.}
@@ -28,9 +28,16 @@ library(raster)
 library(rsutlis)
 f <- system.file("external/test.grd", package="raster")
 im <- raster(f)
-pts <- data.frame(name = 1:3,
-                  lon = c(5.73576, 5.73747, 5.74089),
-                  lat = c(50.97330, 50.96790, 50.97942))
-result <- points_over_rasters(im, pts)
+im2 <- brick(im, im*2, im*3)
+pts <- data.frame(name = paste0("ID", 1:5),
+                  lon = c(5.73576, 5.73747, 5.74089, 20.00, 21.00),
+                  lat = c(50.97330, 50.96790, 50.97942, 100.00, 101.00))
+if(require(leaflet)){
+result_im <- points_over_rasters(im, pts, show.map = TRUE)
+result_im2 <- points_over_rasters(im2, pts, show.map = TRUE)
+}else{
+result_im <- points_over_rasters(im, pts, show.map = FALSE)
+result_im2 <- points_over_rasters(im2, pts, show.map = FALSE)
+}
 
 }

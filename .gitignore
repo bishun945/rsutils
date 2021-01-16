@@ -3,3 +3,5 @@ test/*
 test/test.R
 .Rhistory
 
+ref_aerosols2.csv
+ref_aerosols3.csv
