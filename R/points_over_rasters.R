@@ -15,7 +15,7 @@
 #' @export
 #' @examples
 #' library(raster)
-#' library(rsutlis)
+#' library(rsutils)
 #' f <- system.file("external/test.grd", package="raster")
 #' im <- raster(f)
 #' im2 <- brick(im, im*2, im*3)
