@@ -5,3 +5,5 @@ test/test.R
 
 ref_aerosols2.csv
 ref_aerosols3.csv
+
+.DS_Store
